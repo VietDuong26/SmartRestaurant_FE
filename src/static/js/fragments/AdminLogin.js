@@ -1,6 +1,6 @@
 import '../components/HiddenInput.js';
 import '../components/InputWithLabel.js';
-import { ADMIN_URL, LOGIN_URL } from '../config.js';
+import { ADMIN_URL, LOGIN_URL, REGISTER_URL } from '../config.js';
 import { http } from '../services/HttpClient.js';
 import { auth } from '../services/AuthStore.js';
 
@@ -28,13 +28,12 @@ class AppLogin extends HTMLElement {
             </div>
             <button id="login-form__submit" type="submit" class="w-full min-h-12.5 border rounded-xl bg-primary-700 text-white font-bold cursor-pointer shadow-[0_8px_20px_-8px_rgba(20,83,45,.6)] hover:bg-primary-800 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-primary-700">Đăng nhập</button>
           <div id="login-form__live" role="status" aria-live="polite" data-live=""></div>
-          <p id="login-form__foot" class="mt-6 text-text text-center">Chưa có tài khoản? <a id="login-form__link" href="/auth/register.html" class="text-primary-600 font-medium no-underline rounded-sm">Tạo tài khoản</a></p>
+          <p id="login-form__foot" class="mt-6 text-text text-center">Chưa có tài khoản? <a id="login-form__link" href="${REGISTER_URL}" class="text-primary-600 font-medium no-underline hover:underline hover:underline-offset-3 rounded-sm">Tạo tài khoản</a></p>
         </form>
       `;
     this.form = this.querySelector('#login-form');
     this.error = this.querySelector('[data-error]');
     this.submitBtn = this.querySelector('#login-form__submit');
-
     this.form.addEventListener('submit', e => this.onSubmit(e));
   }
 
